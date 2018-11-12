@@ -13,22 +13,23 @@ const schema = gql`
 
 const typeDefs = gql`
   type Pokemon {
-    forms: [FormDetail]
+    forms: [NameAndURL]
     abilities: [Ability]
     stats: [Statistic]
     name: String!
-    weight: Int!
+    weight: Int
     moves: [Move]
     sprites: Sprite
     held_items: [Item]
+    # TODO: fix this to be an object!
     location_area_encounters: String!
-    height: Int!
-    is_default: Boolean!
-    species: SpeciesDetail
+    height: Int
+    is_default: Boolean
+    species: NameAndURL
     id: Int!
-    order: Int!
+    order: Int
     game_indices: [GameIndex]
-    base_experience: Int!
+    base_experience: Int
     types: [Type]
   }
 
@@ -38,7 +39,7 @@ const typeDefs = gql`
   }
 
   type VersionDetail {
-    rarity: Int!
+    rarity: Int
     version: NameAndURL
   }
 
@@ -50,11 +51,6 @@ const typeDefs = gql`
   type Type {
     slot: Int!
     type: NameAndURL
-  }
-
-  type SpeciesDetail {
-    url: String!
-    name: String!
   }
 
   type Sprite {
@@ -70,12 +66,12 @@ const typeDefs = gql`
 
   type Move {
     version_group_details: [VersionGroupDetail]
-    move: MoveDetail
+    move: NameAndURL
   }
 
   type VersionGroupDetail {
     move_learn_method: NameAndURL
-    level_learned_at: Int!
+    level_learned_at: Int
     version_group: NameAndURL
   }
 
@@ -84,37 +80,16 @@ const typeDefs = gql`
     name: String!
   }
 
-  type MoveDetail {
-    url: String!
-    name: String!
-  }
-
-  type FormDetail {
-    url: String!
-    name: String!
-  }
-
   type Ability {
-    slot: Int!
+    slot: Int
     is_hidden: Boolean!
-    ability: AbilityDetail
-  }
-
-  type AbilityDetail {
-    url: String!
-    name: String!
+    ability: NameAndURL
   }
 
   type Statistic {
-    stat: StatisticDetail!
-    effort: Int!
-    base_Stat: Int!
-  }
-
-  type StatisticDetail {
-    url: String!
-    name: String!
-
+    stat: NameAndURL
+    effort: Int
+    base_Stat: Int
   }
 
   type Query {
