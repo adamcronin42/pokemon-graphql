@@ -2,11 +2,27 @@ const { ApolloServer, gql } = require('apollo-server')
 const fetch = require('node-fetch')
 
 const typeDefs = gql`
-  #schema goes here
+  type Pokemon {
+    name: String!
+  }
+  type Query {
+    getPokemon: [Pokemon]
+  }
 `;
 
+const pokemon = [
+  {
+    name: "Charizard"
+  },
+  {
+    name: "Pikachu"
+  }
+];
+
 const resolvers = {
-  //resolvers go here
+  Query: {
+    getPokemon: () => pokemon
+  }
 }
 
 const server = new ApolloServer({
