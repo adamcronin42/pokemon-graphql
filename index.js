@@ -18,18 +18,53 @@ const schema = gql`
     name: String!
     weight: Int!
     moves: [Move]
-
-    sprites:
-    held_items: []
+    sprites: Sprite
+    held_items: [Item]
     location_area_encounters: String!
     height: Int!
     is_default: Boolean!
-    species:
+    species: SpeciesDetail
     id: Int!
     order: Int!
-    game_indices: []
+    game_indices: [GameIndex]
     base_experience: Int!
-    types: []
+    types: [Type]
+  }
+
+  type Item {
+    item: NameAndURL
+    version_details: 
+  }
+
+  type VersionDetail {
+    rarity: Int!
+    version: NameAndURL
+  }
+
+  type GameIndex {
+    version: NameAndURL
+    game_index: Int!
+  }
+
+  type Type {
+    slot: Int!
+    type: NameAndURL
+  }
+
+  type SpeciesDetail {
+    url: String!
+    name: String!
+  }
+
+  type Sprite {
+    back_femaile: String
+    back_shiny_female: String
+    back_default: String
+    front_female: String
+    front_shiny_female: String
+    back_shiny: String
+    front_default: String
+    front_shiny: String
   }
 
   type Move {
@@ -45,7 +80,7 @@ const schema = gql`
 
   type NameAndURL {
     url: String!
-    name: STring!
+    name: String!
   }
 
   type MoveDetail {
