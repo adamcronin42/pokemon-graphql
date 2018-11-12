@@ -4,7 +4,8 @@
   "description": "A GraphQL api built on top of the Pokemon APIs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/adamcronin42/pokemon-graphql/issues"
   },
-  "homepage": "https://github.com/adamcronin42/pokemon-graphql#readme"
+  "homepage": "https://github.com/adamcronin42/pokemon-graphql#readme",
+  "dependencies": {
+    "apollo-server": "^2.2.1",
+    "graphql": "^14.0.2",
+    "node-fetch": "^2.2.1"
+  }
 }
