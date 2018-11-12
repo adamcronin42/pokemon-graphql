@@ -1,7 +1,8 @@
 const { ApolloServer, gql } = require('apollo-server')
 const fetch = require('node-fetch')
+const butterfree = require('./data/butterfree.json');
 
-const typeDefs = gql`
+const schema = gql`
   type Pokemon {
     name: String!
   }
@@ -10,7 +11,7 @@ const typeDefs = gql`
   }
 `;
 
-const schema = gql`
+const typeDefs = gql`
   type Pokemon {
     forms: [FormDetail]
     abilities: [Ability]
@@ -33,7 +34,7 @@ const schema = gql`
 
   type Item {
     item: NameAndURL
-    version_details: 
+    version_details: VersionDetail
   }
 
   type VersionDetail {
@@ -115,6 +116,10 @@ const schema = gql`
     name: String!
 
   }
+
+  type Query {
+    getButterfree: Pokemon
+  }
 `;
 
 const pokemon = [
@@ -128,7 +133,7 @@ const pokemon = [
 
 const resolvers = {
   Query: {
-    getPokemon: () => pokemon
+    getButterfree: () => butterfree
   }
 }
 
