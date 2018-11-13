@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server')
 const fetch = require('node-fetch')
+const baseUrl = `https://pokeapi.co/api/v2/`;
 
 const typeDefs = gql`
   type Pokemon {
@@ -101,16 +102,18 @@ const typeDefs = gql`
   }
 
   type Query {
-    getButterfree: Pokemon
+    getPokemon(id: ID!): Pokemon
   }
 `;
 
+
+
 const resolvers = {
   Query: {
-    async getButterfree() {
+    async getPokemon(parent, { id }) {
       let butterFreeInfo;
       try {
-        let response = await fetch('https://pokeapi.co/api/v2/pokemon/butterfree/');
+        let response = await fetch(`${baseUrl}pokemon/${id}/`);
         butterFreeInfo = await response.json();
       } catch(err) {
         throw new Error(err);
