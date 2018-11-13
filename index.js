@@ -127,7 +127,11 @@ const pokemon = [
 
 const resolvers = {
   Query: {
-    getButterfree: () => butterfree
+    async getButterfree() {
+      let response = await fetch('https://pokeapi.co/api/v2/pokemon/butterfree/');
+      let butterFreeInfo = await response.json();
+      return butterFreeInfo;
+    }
   }
 }
 
