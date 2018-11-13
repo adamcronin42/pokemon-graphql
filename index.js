@@ -128,8 +128,13 @@ const pokemon = [
 const resolvers = {
   Query: {
     async getButterfree() {
-      let response = await fetch('https://pokeapi.co/api/v2/pokemon/butterfree/');
-      let butterFreeInfo = await response.json();
+      let butterFreeInfo;
+      try {
+        let response = await fetch('https://pokeapi.co/api/v2/pokemon/butterfree/');
+        butterFreeInfo = await response.json();
+      } catch(err) {
+        throw new Error(err);
+      }
       return butterFreeInfo;
     }
   }
