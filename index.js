@@ -22,7 +22,7 @@ const typeDefs = gql`
     sprites: Sprite
     held_items: [Item]
     # TODO: fix this to be an object!
-    location_area_encounters: String!
+    location_area_encounters: LocationAreaEncounter
     height: Int
     is_default: Boolean
     species: NameAndURL
@@ -33,12 +33,31 @@ const typeDefs = gql`
     types: [Type]
   }
 
-  type Item {
-    item: NameAndURL
-    version_details: VersionDetail
+  type LocationAreaEncounter {
+    location_area: NameAndURL
+    version_details: [VersionDetail]
+  }
+
+  type EncounterDetail {
+    min_level: Int
+    max_level: Int
+    condition_values: [NameAndURL]
+    chance: Int
+    method: NameAndURL
   }
 
   type VersionDetail {
+    max_chance: Int
+    encounter_details: [EncounterDetail]
+    version: NameAndURL
+  }
+
+  type Item {
+    item: NameAndURL
+    version_details: ItemVersionDetail
+  }
+
+  type ItemVersionDetail {
     rarity: Int
     version: NameAndURL
   }
