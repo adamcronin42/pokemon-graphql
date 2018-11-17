@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/adamcronin42/pokemon-graphql#readme",
   "dependencies": {
+    "apollo-datasource-rest": "^0.2.0",
     "apollo-server": "^2.2.1",
     "graphql": "^14.0.2",
     "node-fetch": "^2.2.1"
